@@ -1,0 +1,67 @@
+<div class="notice">
+	<h3>Complete the form below to begin import</h3>
+	<ul>
+		<li>
+			<strong>HIDDEN RESOURCES:</strong> By default, the importer will include resources that are marked as hidden from navigation. Uncheck the option below to exclude them.
+		</li>
+		<li>
+			<strong>UNPUBLISHED RESOURCES:</strong> The importer will only display children of published resources unless you select the option below to include unpublished resources. If you don't see all the resources you expected to, check the remote site to see if any parent documents up the tree are unpublished and either publish them or check the option below to include unpublished resources in the results.
+		</li>
+		<!--<li>
+			<strong>SPECIFIC PARENTS:</strong> If you're importing a large site, it might be best to limit the results to specific parents to prevent returning too large a selection form. Enter parent documents as a comma separated list of IDs based on the resource IDs on the remote site.
+		</li>-->
+		<li>
+			<strong>KEYWORDS AND CATEGORIES:</strong> If the remote site includes a template variable for categorization and/or keywording, enter the name of the template variable below and the imported will attempt to include this data.
+		</li>
+</div>
+
+<div class="form">
+	<form class="step1" method="POST">
+		<input type="hidden" name="step" value="1">
+		<div class="text">
+			<label for="site">Enter full site URL without trailing slash (i.e. https://gm.adventistmission.org)</label>
+			<input id="site" type="text" name="site">
+		</div>
+		<div class="section">
+			<div class="text">
+				<label for="username">Authorized administrator username</label>
+				<input id="username" type="text" name="username">
+			</div>
+			<div class="text">
+				<label for="password">Password for administrator username</label>
+				<input id="password" type="password" name="password">
+			</div>
+		</div>
+		<div class="section options">
+			<p><input type="checkbox" name="showHidden" checked> Include resources hidden from navigation</p>
+			<p><input type="checkbox" name="showUnpublished"> Include unpublished resources</p>
+		</div>
+		<!--<div class="text">
+			<label for="parents">Limit results to specific parents (optional comma separated list of IDs)</label>
+			<input id="parents" type="text" name="pdo[parents]">
+		</div>-->
+		<div class="select">
+			<label for="level">Limit tree depth (optional)</label>
+			<select name="level">
+				<option value="0">Include All</option>
+				<option value="1">Root level only</option>
+				<option value="2">Root plus 1</option>
+				<option value="3">Root plus 2</option>
+				<option value="4">Root plus 3</option>
+				<option value="5">Root plus 4</option>
+			</select>
+		</div>
+		<div class="text">
+			<label for="categoryTV">Variable for categorization (optional)</label>
+			<input id="categoryTV" type="text" name="categoryTV">
+		</div>
+		<div class="text">
+			<label for="tagsTV">Variable for keywords/tags (optional)</label>
+			<input id="tagsTV" type="text" name="tagsTV">
+		</div>
+
+		<div class="buttons">
+			<input class="button" type="submit" value="Get resource list">
+		</div>
+	</form>
+</div>

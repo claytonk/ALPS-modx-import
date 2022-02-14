@@ -1,0 +1,23 @@
+<form class="manifest" method="POST">
+	<input type="hidden" name="step" value="manifest">
+	<input type="hidden" name="site" value="[*site*]">
+	<div class="notice">
+		<h2>It appears an import from [*site*] was started but did not complete. To restart the import, please reenter the authorized username and password for the remote site.</h2>
+	</div>
+	<div class="form">
+		<div class="section">
+			<div class="text">
+				<label for="username">Authorized Username</label>
+				<input id="username" type="text" name="username">
+			</div>
+			<div class="text">
+				<label for="password">Password for Username</label>
+				<input id="password" type="password" name="password">
+			</div>
+		</div>
+
+		<div class="section buttons">
+			<input class="button" type="submit" value="Restart Import">
+		</div>
+	</div>
+</form>

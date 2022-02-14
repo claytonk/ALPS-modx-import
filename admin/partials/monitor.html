@@ -1,0 +1,36 @@
+<div id="modx-import-monitor">
+	<div class="notice">
+		<div id="log">
+			<h2>Importing <span id="count-total"></span></h2>
+			<div id="status"><span id="bar" style="width: 0%;"></span></div>
+			<h4><span id="count-current"></span> completed.</h4>
+			<h3 id="message"></h3>
+		</div>
+
+		<div class="options">
+			<h3>
+				You can process the import in one of two ways:
+			</h3>
+			<div class="option">
+				<h3>Sequential import:</h3>
+				<p>
+					This will process each resource individually and provide real-time monitoring. However, if you navigate away from this page the import will stop and you will have to restart from where you left off. This method is better for large imports that might cause the server to timeout.
+				</p>
+				<p class="button" id="sequential">
+					Begin Sequential Import
+				</p>
+			</div>
+			<div class="option">
+				<h3>Batch import:</h3>
+				<p>
+					This will attempt to process the entire import file in one go. You should still see the monitor above update automatically every few seconds, but it will not update after every resource. Using this option you can navigation away from this page and the import should continue.
+				</p>
+				<p class="button" id="batch">
+					Begin Batch Import
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="transcript"></div>
+</div>
