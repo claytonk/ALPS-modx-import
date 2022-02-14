@@ -206,7 +206,15 @@ ul ul {
   font: 600 1.4em/1em "Open Sans", sans serif;
   margin: 0 .5em 0 0;
 }
-/* line 181, ../sass/modx-import-admin.scss */
+/* line 180, ../sass/modx-import-admin.scss */
+.level-1 h4 .warning {
+  color: #C75007;
+  font-size: .6em;
+  font-weight: normal;
+  margin-left: 1em;
+  text-transform: uppercase;
+}
+/* line 188, ../sass/modx-import-admin.scss */
 .level-1 .folder {
   border-top: 1px solid #C3C3C3;
   border-bottom: 1px solid #C3C3C3;
@@ -214,29 +222,29 @@ ul ul {
   padding-bottom: 1em;
 }
 
-/* line 189, ../sass/modx-import-admin.scss */
+/* line 196, ../sass/modx-import-admin.scss */
 .drawer {
   padding-left: .3em;
 }
 
-/* line 194, ../sass/modx-import-admin.scss */
+/* line 201, ../sass/modx-import-admin.scss */
 .children li {
   border-left: 3px solid #C3C3C3;
   margin: 1em 0;
   padding: 0 0 0 1.5em;
 }
-/* line 199, ../sass/modx-import-admin.scss */
+/* line 206, ../sass/modx-import-admin.scss */
 .children h4 {
   font-size: 1.2em;
 }
 
-/* line 204, ../sass/modx-import-admin.scss */
+/* line 211, ../sass/modx-import-admin.scss */
 .toggle {
   display: flex;
   align-items: center;
   margin-left: -3px;
 }
-/* line 208, ../sass/modx-import-admin.scss */
+/* line 215, ../sass/modx-import-admin.scss */
 .toggle i {
   background: #2271b1;
   border-radius: 10px;
@@ -252,36 +260,36 @@ ul ul {
   width: 20px;
 }
 
-/* line 226, ../sass/modx-import-admin.scss */
+/* line 233, ../sass/modx-import-admin.scss */
 .entry p {
   color: #858585;
   font: 400 0.8em/1em "Open Sans", sans serif;
   margin: 0 1em 0 0;
   text-transform: uppercase;
 }
-/* line 232, ../sass/modx-import-admin.scss */
+/* line 239, ../sass/modx-import-admin.scss */
 .entry .primary {
   align-items: baseline;
 }
-/* line 235, ../sass/modx-import-admin.scss */
+/* line 242, ../sass/modx-import-admin.scss */
 .entry .options1 {
   font-weight: 400;
 }
-/* line 238, ../sass/modx-import-admin.scss */
+/* line 245, ../sass/modx-import-admin.scss */
 .entry .select {
   font-size: 1em;
 }
 
-/* line 243, ../sass/modx-import-admin.scss */
+/* line 250, ../sass/modx-import-admin.scss */
 .open {
   margin: 1em 0 1.5em;
 }
-/* line 244, ../sass/modx-import-admin.scss */
+/* line 251, ../sass/modx-import-admin.scss */
 .open > ul {
   display: block;
 }
 
-/* line 251, ../sass/modx-import-admin.scss */
+/* line 258, ../sass/modx-import-admin.scss */
 .buttons > * {
   margin-right: 1em !important;
 }

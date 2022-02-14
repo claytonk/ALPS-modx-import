@@ -1,1 +1,0 @@
-{"version":3,"sources":["modx-import-admin.scss"],"names":[],"mappings":"AAEE,6BACC,YAAA,CACA,cAAA","file":"modx-import-admin.css","sourcesContent":[".modx-import {\n\t.entry {\n\t\t.primary {\n\t\t\tdisplay: flex;\n\t\t\tflex-wrap: wrap;\n\t\t}\n\t}\n}"]}
