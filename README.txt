@@ -1,7 +1,6 @@
 === Plugin Name ===
 Contributors: claytonk
-Donate link: https://github.com/claytonk
-Tags: import, modx
+Tags: import, modx, ALPS3
 Requires at least: 5.1
 Tested up to: 5.9
 Stable tag: 0.5
