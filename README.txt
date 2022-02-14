@@ -20,7 +20,7 @@ This utility requires an endpoint be present on the remote site. The resources f
 
 == Installation ==
 
-1. Upload `modx-import.php` to the `/wp-content/plugins/` directory
+1. Upload zipped repository to `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. You should see a "MODX Import" menu item in your admin sidebar. Click it to begin the import process.
 
