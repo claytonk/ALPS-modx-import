@@ -122,7 +122,6 @@
 						$.post( "/wp-content/plugins/modx-import/admin/partials/process.php", post).done(function( result ) {
 							postCount++;
 							result = JSON.parse(result);
-							console.log(result);
 							if (result.status){
 								ids[id] = false;
 								if (id in modxComplete == false){
@@ -133,19 +132,12 @@
 								}
 								monitor(total,Object.keys(modxComplete).length);
 							}
-							console.log(runCount+':'+postCount);
 							if (postCount == runCount){
 								sequential(ids,data,total);
 							}
 						});
 					}
 				});
-				if (runCount == 0){
-					$.post( "/wp-content/plugins/modx-import/admin/partials/process.php", {"constant":constant,"updateLogs":true,"processed":{"complete":modxComplete,"incomplete":modxIncomplete}}).done(function( result ) {
-						//result = JSON.parse(result);
-						console.log(result);
-					});
-				}
 				if (runCount == 0){
 					finished('Import completed successfully.');
 				}
