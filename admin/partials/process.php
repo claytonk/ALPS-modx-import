@@ -52,9 +52,9 @@ if ($_POST['process-single']){
 if ($_POST['process-batch']){
 	$batch = json_decode(file_get_contents( MODX_IMPORT_PATH . 'admin/logs/import.json' ),true );
 
-	// log each iteration in case of timeout and for csv monitoring
+	// process and log each iteration in case of timeout and for csv monitoring
 	foreach($batch as $id => $p){
-		$result = process($id,$p);
+		$result = process($id,$p,$count);
 		if ($result['status']){
 			fputcsv($csvComplete, [$id,$result['result']['postid'],$result['result']['menuid'],$now]);
 		}
@@ -63,7 +63,7 @@ if ($_POST['process-batch']){
 	// check for incompletes that were waiting on local IDs
 	if (!empty($processed['incomplete'])){
 		foreach($processed['incomplete'] as $id => $values){
-			$result = process($id,$batch[$id]);
+			$result = process($id,$batch[$id],count);
 			if ($result['status']){
 				fputcsv($csvComplete, [$id,$result['result']['postid'],$result['result']['menuid'],$now]);
 			}

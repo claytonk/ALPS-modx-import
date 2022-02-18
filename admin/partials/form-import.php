@@ -14,69 +14,73 @@
 
 // wrapping function to determine where in the process we are and route activity to proper processor
 function getStep(){
-    include_once( MODX_IMPORT_PATH . 'admin/class-modx-import-request.php' );
+	include_once( MODX_IMPORT_PATH . 'admin/class-modx-import-request.php' );
 
-    // check to see if partial import exists and remove completed imports from manifest
-    if ($manifest = json_decode(file_get_contents( MODX_IMPORT_PATH . 'admin/logs/manifest.json' ),true )){
-        $new = false;
-        $finished = array();
-        if ($csv = fopen(MODX_IMPORT_PATH . 'admin/logs/completed.csv','r')){
-            while (($r = fgetcsv($csv, 1000, ",")) !== FALSE) {
-                $finished[$r[0]] = array(
-                    'postid' => $r[1],
-                    'menuid' => $r[2]
-                );
-            }
-        }
-        if (!empty($finished)){
-            foreach($finished as $old => $new){
-                unset($manifest['resources'][$old]);
-            }
-            $json = fopen(MODX_IMPORT_PATH.'admin/logs/manifest.json', 'w');
-            fwrite($json, json_encode($manifest));
-            fclose($json);
-        }
-        if (!empty($manifest['resources']) && $_POST['step'] != 'manifest'){
-            $new = false;
-            $process = false;
-            $output = str_replace('[*site*]', $manifest['site'], file_get_contents( MODX_IMPORT_PATH . 'admin/partials/form-partial.html' ));
-        }else{
-            $new = true;
+	if (!file_exists(MODX_IMPORT_PATH . 'admin/logs')) {
+		mkdir(MODX_IMPORT_PATH . 'admin/logs', 0777, true);
+	}
+
+	// check to see if partial import exists and remove completed imports from manifest
+	if ($manifest = json_decode(file_get_contents( MODX_IMPORT_PATH . 'admin/logs/manifest.json' ),true )){
+		$new = false;
+		$finished = array();
+		if (file_exists(MODX_IMPORT_PATH . 'admin/logs/completed.csv') && $csv = fopen(MODX_IMPORT_PATH . 'admin/logs/completed.csv','r')){
+			while (($r = fgetcsv($csv, 1000, ",")) !== FALSE) {
+				$finished[$r[0]] = array(
+					'postid' => $r[1],
+					'menuid' => $r[2]
+				);
+			}
+		}
+		if (!empty($finished)){
+			foreach($finished as $old => $new){
+				unset($manifest['resources'][$old]);
+			}
+			$json = fopen(MODX_IMPORT_PATH.'admin/logs/manifest.json', 'w');
+			fwrite($json, json_encode($manifest));
+			fclose($json);
+		}
+		if (!empty($manifest['resources']) && $_POST['step'] != 'manifest'){
+			$new = false;
+			$process = false;
+			$output = str_replace('[*site*]', $manifest['site'], file_get_contents( MODX_IMPORT_PATH . 'admin/partials/form-partial.html' ));
+		}else{
+			$new = true;
 			ftruncate($csv, 0);
-        }
+		}
 		fclose($csv);
-    }else{
-        $manifest = array(
-            'site' => '',
-            'resources' => array()
-        );
-        $new = true;
-    }
+	}else{
+		$manifest = array(
+			'site' => '',
+			'resources' => array()
+		);
+		$new = true;
+	}
 
-    // output partial form if manifest exists and resources remain
-    if ($_POST['step'] == 'manifest'){
-        $_POST['resources'] = $manifest['resources'];
-        $new = true;
-        $process = true;
-    }
+	// output partial form if manifest exists and resources remain
+	if ($_POST['step'] == 'manifest'){
+		$_POST['resources'] = $manifest['resources'];
+		$new = true;
+		$process = true;
+	}
 
-    // output initial form if no request exists
-    if ($new && empty($_POST['step'])){
-        $output = file_get_contents( MODX_IMPORT_PATH . 'admin/partials/form-request.html' );
-    }
+	// output initial form if no request exists
+	if ($new && empty($_POST['step'])){
+		$output = file_get_contents( MODX_IMPORT_PATH . 'admin/partials/form-request.html' );
+	}
 
-    // make remote request
-    if ($new && ((!empty($_POST['username']) && !empty($_POST['password'])) || !empty($_POST['token']))){
-        $params = $_POST;
-        $request = new Import_Request($_POST['site'],$params);
+	// make remote request
+	if ($new && ((!empty($_POST['username']) && !empty($_POST['password'])) || !empty($_POST['token']))){
+		$params = $_POST;
+		$request = new Import_Request($_POST['site'],$params);
 		$output = $request->reply;
-        if ($_POST['step'] == 2 || $_POST['step'] == 'manifest'){
+		if ($_POST['step'] == 2 || $_POST['step'] == 'manifest'){
 			$manifest['token'] = $_POST['token'];
-            $manifest['site'] = $_POST['site'];
-            $manifest['resources'] = $_POST['resources'];
-            $json = fopen(MODX_IMPORT_PATH.'admin/logs/manifest.json', 'w');
-            fwrite($json, json_encode($manifest));
-            fclose($json);
+			$manifest['site'] = $_POST['site'];
+			$manifest['resources'] = $_POST['resources'];
+			$json = fopen(MODX_IMPORT_PATH.'admin/logs/manifest.json', 'w');
+			fwrite($json, json_encode($manifest));
+			fclose($json);
 			$complete = fopen(MODX_IMPORT_PATH . 'admin/logs/completed.csv','w');
 			fclose($complete);
 			if ($output){
@@ -86,16 +90,16 @@ function getStep(){
 				$process = true;
 				$output = '';
 			}
-        }
-    }
+		}
+	}
 
-    // output monitor and import options if all is good to go
-    if ($process && !empty($manifest['resources'])){
+	// output monitor and import options if all is good to go
+	if ($process && !empty($manifest['resources'])){
 		$output.= '<script>var constant = { "MODX_IMPORT_PATH" : "'.MODX_IMPORT_PATH.'", "ABSPATH" : "'.ABSPATH.'"}</script>';
 		$output.= file_get_contents( MODX_IMPORT_PATH . 'admin/partials/monitor.html' );
-    }
+	}
 
-    return $output;
+	return $output;
 }
 
 
