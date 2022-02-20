@@ -12,7 +12,8 @@ This utility requires an endpoint be present on the remote site. The resources f
 
 ## Installation
 
-1. Rename zipped repository as 'modx-import.zip'
-1. Upload 'modx-import.zip' to `/wp-content/plugins/` directory and unzip or go to your Wordpress plugins and click "Add New" to upload and unzip
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. You should see a "MODX Import" menu item in your admin sidebar. Click it to begin the import process.
+1. Download repository as 'modx-import.zip' (rename after download or during download). If you don't rename the file zip file you will need to rename the directory after it is extracted.
+2. Upload 'modx-import.zip' to `/wp-content/plugins/` directory and unzip or go to your Wordpress plugins and click "Add New" to upload and unzip
+3. Ensure plugin directory is named 'modx-import'
+4. Activate the plugin through the 'Plugins' menu in WordPress
+5. You should see a "MODX Import" menu item in your admin sidebar. Click it to begin the import process.
