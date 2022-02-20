@@ -12,6 +12,8 @@ This utility requires an endpoint be present on the remote site. The resources f
 
 ## Installation
 
+Because this is a private repository cloning is problematic so a manual install will be easier.
+
 1. Download repository
 2. Upload zipped repository to your wp-content/plugins/ folder
 3. Unzip repository, rename extracted folder as "modx-import" and delete repository archive
