@@ -15,7 +15,7 @@ This utility requires an endpoint be present on the remote site. The resources f
 Because this is a private repository cloning is problematic so a manual install will be easier. **If Cloudflare is running on the domain you will need to deativate it temporarily to avoid interference during import.**
 
 1. Download repository
-2. Upload zipped repository to your wp-content/plugins/ folder
+2. Upload zipped repository to your wp-content/plugins/ directory
 3. Unzip repository, **rename extracted folder as "modx-import"** and delete repository archive
 4. Activate the plugin through the 'Plugins' menu in WordPress
 5. You should see a "MODX Import" menu item in your admin sidebar. Click it to begin the import process.
