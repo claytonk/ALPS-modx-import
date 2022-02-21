@@ -74,6 +74,10 @@ function getStep(){
 		$params = $_POST;
 		$request = new Import_Request($_POST['site'],$params);
 		$output = $request->reply;
+		if ($_POST['step'] != 'manifest'){
+			$complete = fopen(MODX_IMPORT_PATH . 'admin/logs/completed.csv','w');
+			fclose($complete);
+		}
 		if ($_POST['step'] == 2 || $_POST['step'] == 'manifest'){
 			$manifest['token'] = $_POST['token'];
 			$manifest['site'] = $_POST['site'];
@@ -81,8 +85,6 @@ function getStep(){
 			$json = fopen(MODX_IMPORT_PATH.'admin/logs/manifest.json', 'w');
 			fwrite($json, json_encode($manifest));
 			fclose($json);
-			$complete = fopen(MODX_IMPORT_PATH . 'admin/logs/completed.csv','w');
-			fclose($complete);
 			if ($output){
 				$import = fopen(MODX_IMPORT_PATH.'admin/logs/import.json', 'w');
 				fwrite($import,$output);

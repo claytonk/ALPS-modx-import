@@ -92,22 +92,22 @@
 					modxIncomplete[log[0]] = JSON.parse(log[1]);
 				});
 				csvReady = true;
+				$.get( "/wp-content/plugins/modx-import/admin/logs/import.json").done(function(data){
+					var ids = Object.keys(data);
+					total = ids.length;
+					monitor(total,false);
+					phrase(total);
+					ids.forEach(function(id){
+						if (id in modxComplete == false){
+							toRun[id] = true;
+						}
+					});
+					$('#sequential').on('click',function(){
+						sequential(toRun,data,total);
+					})
+				})
 			});
 
-			$.get( "/wp-content/plugins/modx-import/admin/logs/import.json").done(function(data){
-				var ids = Object.keys(data);
-				total = ids.length;
-				monitor(total,false);
-				phrase(total);
-				ids.forEach(function(id){
-					if (id in modxComplete == false){
-						toRun[id] = true;
-					}
-				});
-				$('#sequential').on('click',function(){
-					sequential(toRun,data,total);
-				})
-			})
 
 			function sequential(ids,data,total){
 				running();
