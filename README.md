@@ -12,7 +12,7 @@ This utility requires an endpoint be present on the remote site. The resources f
 
 ## Installation
 
-Because this is a private repository cloning is problematic so a manual install will be easier.
+Because this is a private repository cloning is problematic so a manual install will be easier. **If Cloudflare is running on the domain you will need to deativate it temporarily to avoid interference during import.**
 
 1. Download repository
 2. Upload zipped repository to your wp-content/plugins/ folder
