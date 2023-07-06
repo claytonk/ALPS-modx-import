@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       MODX Import
  * Plugin URI:        https://github.com/claytonk/ALPS-MODX-Import-to-WP
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       A plugin for importing MODX content and media into an ALPS wordpress site.
  * Version:           1.0.0
  * Author:            Clayton Kinney
  * Author URI:        https://github.com/claytonk
